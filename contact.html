@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="cont.css">
+</head>
+
+<body>
+
+    <div class="back">
+        <a href="new_rk/rk.html" class="previous round">&#8249;</a>
+    </div>
+    <div class="contact_title">
+        <h1>for contact</h1>
+        <h2>here you can message me</h2>
+    </div>
+
+    <div class="cnt_form">
+        <form>
+            <input type="text" name="name" class="form1" id="form-1" placeholder="Your Name" required>
+            <br>
+            <input type="email" name="email" class="form1" id="form-2" placeholder="Your Email" required>
+            <br>
+            <input type="text" name="phone_num" id="PH_no" class="form1" placeholder="phone number">
+            <textarea name="message" class="form1" id="text-area" rows="4" placeholder="Write your message"
+                required></textarea>
+            <br>
+        </form>
+    </div>
+    <button type="submit" class="custom-btn btn-7" id="but" name="btn-send" onclick="sendEmail()">
+        <span>
+            SEND MESSAGE
+        </span>
+    </button>
+
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+
+        var submit = document.getElementById("but");
+
+        function sendEmail() {
+
+            submit.value = "Sending...";
+
+            Email.send({
+                // Host: "smtp.elasticemail.com",
+                // Username: "18abkiran5o5@gmail.com",
+                SecureToken : "b9c63ba8-a60c-4186-ba78-cdb55a25fd6c",
+                To: '18abkiran5o5@gmail.com',
+                From: document.getElementById("form-2").value,
+                Subject: "RK's contact form",
+                Body: document.getElementById("text-area") + document.getElementById("PH_no")
+            }).then(
+                message => alert(message)
+            );
+
+            submit.value = "Sent";
+        }
+    </script>
+
+</body>
+
+</html>
+
